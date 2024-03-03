@@ -6,13 +6,14 @@ import edu.uoc.ds.adt.sequential.QueueArrayImpl;
 
 public class PR0Queue {
 
-    public final int CAPACITY = 10;
+    public final int CAPACITY = 37;
 
-    private Queue<Character> queue;
+    private Queue<Double> queue;
 
     public PR0Queue() {
         newQueue();
     }
+
     public void newQueue() {
         queue = new QueueArrayImpl<>(CAPACITY);
     }
@@ -22,16 +23,36 @@ public class PR0Queue {
         StringBuilder sb = new StringBuilder();
         char r;
         while (!queue.isEmpty()) {
-            sb.append(queue.poll()).append(" ");
+            String value = queue.poll().toString().replace("0.0", "0");
+
+            sb.append(value);
+
+            if (!queue.isEmpty()) {
+                sb.append(" ");
+            }
         }
         return sb.toString();
     }
 
-    public Queue<Character> getQueue() {
+    public Queue<Double> getQueue() {
         return this.queue;
     }
 
-    public void add(Character c) {
-        this.queue.add(c);
+    private double sinus(double angdeg) {
+        double rads = Math.toRadians(angdeg);
+
+        return Math.sin(rads);
+    }
+
+    private double round(double num, int decimalCount) {
+        var notation = Math.pow(10, decimalCount);
+
+        return Math.round(num * notation) / notation;
+    }
+
+    public void add(double angdeg) {
+        var value = round(sinus(angdeg), 3);
+
+        this.queue.add(value);
     }
 }

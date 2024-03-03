@@ -20,15 +20,19 @@ public class PR0CypherCaesarArrayTest {
 
     @Test
     public void shiftCharTest() {
-        Assert.assertEquals('C', PR0CypherCaesarArray.shiftChar('A', 2, new Tuple(65, 90)));
-        Assert.assertEquals('A', PR0CypherCaesarArray.shiftChar('Z', 1, new Tuple(65, 90)));
-        Assert.assertEquals('A', PR0CypherCaesarArray.shiftChar('A', 0, new Tuple(65, 90)));
+        Assert.assertEquals('C', PR0CypherCaesarArray.shiftChar('A', 2, PR0CypherCaesarArray.upperCaseStart,
+                PR0CypherCaesarArray.upperCaseEnd));
+        Assert.assertEquals('A', PR0CypherCaesarArray.shiftChar('Z', 1, PR0CypherCaesarArray.upperCaseStart,
+                PR0CypherCaesarArray.upperCaseEnd));
+        Assert.assertEquals('A', PR0CypherCaesarArray.shiftChar('A', 0, PR0CypherCaesarArray.upperCaseStart,
+                PR0CypherCaesarArray.upperCaseEnd));
     }
 
     @Test
     public void arrayTest() {
-        char[] expected = {'E', 'b', 'u', 'b', ' ', 't', 'u', 's', 'v', 'd', 'u', 'v', 's', 'f', 't', ' ',
-                'b', 's', 'f', ' ', 'd', 'p', 'p', 'm', ' ', 'b', 'o', 'e', ' ', 'f', 't', 't', 'f', 'o', 'u', 'j', 'b', 'm', ' ', 'g', 'p', 's', ' ', 'd', 'p', 'n', 'q', 'v', 'u', 'j', 'o', 'h'
+        char[] expected = { 'E', 'b', 'u', 'b', ' ', 't', 'u', 's', 'v', 'd', 'u', 'v', 's', 'f', 't', ' ',
+                'b', 's', 'f', ' ', 'd', 'p', 'p', 'm', ' ', 'b', 'o', 'e', ' ', 'f', 't', 't', 'f', 'o', 'u', 'j', 'b',
+                'm', ' ', 'g', 'p', 's', ' ', 'd', 'p', 'n', 'q', 'v', 'u', 'j', 'o', 'h'
         };
 
         Assert.assertArrayEquals(expected, this.pr0Array.cypher2Array(1));

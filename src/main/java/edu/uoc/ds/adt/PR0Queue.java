@@ -23,13 +23,9 @@ public class PR0Queue {
         StringBuilder sb = new StringBuilder();
         char r;
         while (!queue.isEmpty()) {
-            String value = queue.poll().toString().replace("0.0", "0");
+            String value = queue.poll().toString().replace(".0", "");
 
-            sb.append(value);
-
-            if (!queue.isEmpty()) {
-                sb.append(" ");
-            }
+            sb.append(value).append(" ");
         }
         return sb.toString();
     }
